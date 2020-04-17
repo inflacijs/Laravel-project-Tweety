@@ -12,5 +12,6 @@ class ImagePrepare
         $image = Image::make($imagePath)->fit(700,300);
         dd($image);
         
+        
     }
 }
