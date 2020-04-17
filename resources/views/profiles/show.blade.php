@@ -1,9 +1,14 @@
+<?php
+
+use App\ImagePrepare;
+?>
+
 <x-app>
     <header class="mb-6" style="position:relative;">
        <div class="relative">
-       
             <img 
-                src="{{$user->banner}}" 
+            
+                src="{{ImagePrepare::profileBanner($user->banner)}}" 
                 alt=""
                 width="700"
                 height="223"

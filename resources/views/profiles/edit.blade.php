@@ -98,11 +98,9 @@
         <textarea class="border border-gray-400 p-2 w-full"
                name="description"
                id="description"
-               value="{{ $user->description }}"
-               rows="5"
-               
-        >
-    </textarea>
+               rows="5"          
+        >{{ $user->description }}
+       </textarea>
 
         @error('avatar')
         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -184,9 +182,5 @@
 
 </form>
 
-
-{{-- @foreach ($errors->all() as $error)
-   <div>{{ $error }}</div>
-@endforeach --}}
 
 </x-app>
