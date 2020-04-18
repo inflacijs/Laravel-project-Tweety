@@ -43,13 +43,14 @@ class User extends Authenticatable
     public function getAvatarAttribute($value) // Izsaucot user->avatar, __getProperty maģiskā metode pārbauda vai mums nav šāda metode, kas koriģē value.
     {
         
-        return asset($value ? 'storage/' . $value : '/images/icon.png'); // asset ģenerē url
+        
+        return $value ? 'http://localhost/tweety/public/imagecache/avatar/' . $value  : asset('/images/icon.png');
     }
 
     public function getBannerAttribute($value)
     {
         
-        return $value ? 
+        return $value ? 'http://localhost/tweety/public/imagecache/banner/' . $value  : asset('/images/no-image.png');
     }
 
     public function setPasswordAttribute($value) // Reģistrācijas brīdīt user->password pārvērš sālī.

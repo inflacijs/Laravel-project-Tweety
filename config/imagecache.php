@@ -56,6 +56,7 @@ return array(
         'medium' => 'Intervention\Image\Templates\Medium',
         'large' => 'Intervention\Image\Templates\Large',
         'banner' => 'App\Filters\banerFilter',
+        'avatar' => 'App\Filters\avatarFilter',
     ),
 
     /*

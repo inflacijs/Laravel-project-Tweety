@@ -29,7 +29,7 @@ class ProfilesController extends Controller
             'email' => ['string', 'required', 'max:255', 'email', Rule::unique('users')->ignore($user)],
             'avatar' => ['image'],
             'banner' => ['image'],
-            'description' => ['string', 'max:5000'],
+            'description' => ['string', 'max:5000', 'nullable'],
             'password' => ['string', 'required', 'min:8', 'max:255', 'confirmed'],
 
         ]);
