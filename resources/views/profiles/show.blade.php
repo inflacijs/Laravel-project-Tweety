@@ -7,8 +7,7 @@ use App\ImagePrepare;
     <header class="mb-6" style="position:relative;">
        <div class="relative">
             <img 
-            
-                src="{{ImagePrepare::profileBanner($user->banner)}}" 
+                src="http://localhost/tweety/public/imagecache/banner/{{$user->banner}}" 
                 alt=""
                 width="700"
                 height="223"

@@ -1,7 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +43,20 @@ Route::get('/logout', function() {
     Auth::logout();
     return redirect('/login');
 })->name('logout');
+
+Route::get('/image', function()
+{
+    // $img = Image::make('http://localhost/tweety/public/storage/banners/fqMXpuYCPAOT4W9rArDhgwGxaNu4aGIwsjnq0Rqp.jpeg')->fit(300,300);
+    
+    // return $img->response('jpg');
+
+     $img = Image::cache(function($image) {
+        $image->make('http://localhost/tweety/public/storage/banners/fqMXpuYCPAOT4W9rArDhgwGxaNu4aGIwsjnq0Rqp.jpeg')->resize(300, 200)->greyscale();
+        
+    });
+    return $img->response('jpg');
+});
+
 
 
 

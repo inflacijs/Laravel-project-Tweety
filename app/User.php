@@ -49,7 +49,7 @@ class User extends Authenticatable
     public function getBannerAttribute($value)
     {
         
-        return asset($value ? 'storage/' . $value : '/images/no-image.png');
+        return $value ? 
     }
 
     public function setPasswordAttribute($value) // Reģistrācijas brīdīt user->password pārvērš sālī.
