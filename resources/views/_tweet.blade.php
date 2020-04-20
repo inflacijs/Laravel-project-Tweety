@@ -17,6 +17,13 @@
          <p class="text-sm">
              {{$tweet->body}}
          </p>
+        @if($tweet->image)
+            <img 
+                src="{{$tweet->image}}" 
+                alt="tweet's image"
+                class="rounded-lg my-6 "
+                >
+        @endif            
 
          <x-like-buttons :tweet="$tweet"/>
     </div>

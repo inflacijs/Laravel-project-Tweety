@@ -1,13 +1,30 @@
 <div class="border border-blue-400 rounded-lg py-6 px-8">
-    <form method="POST" action="/tweety/public/tweets">
+    <form method="POST" action="/tweety/public/tweets" enctype="multipart/form-data">
         @csrf
         <textarea 
              name="body" 
              class="w-full"
              placeholder="What's up doc?"
              required
+             rows="4"
         ></textarea>
         
+        <div class="mb-6">
+            
+                <input class="border border-gray-400 p-2 w-full"
+                       type="file"
+                       name="image"
+                       id="image"         
+                >
+                @error('image')
+                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                @enderror
+           
+        </div>
+
+  
+
+      
 
         <hr class="my-4">
          
@@ -33,3 +50,7 @@
         <p class="text-red-500 text-sm">{{$message}}</p>
     @enderror
 </div>
+
+
+
+
