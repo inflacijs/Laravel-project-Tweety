@@ -7,6 +7,7 @@
              placeholder="What's up doc?"
              required
         ></textarea>
+        
 
         <hr class="my-4">
          

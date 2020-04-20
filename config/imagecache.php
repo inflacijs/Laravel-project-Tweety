@@ -55,8 +55,8 @@ return array(
         'small' => 'Intervention\Image\Templates\Small',
         'medium' => 'Intervention\Image\Templates\Medium',
         'large' => 'Intervention\Image\Templates\Large',
-        'banner' => 'App\Filters\banerFilter',
-        'avatar' => 'App\Filters\avatarFilter',
+        'banner' => 'App\Filters\BanerFilter',
+        'avatar' => 'App\Filters\AvatarFilter',
     ),
 
     /*
