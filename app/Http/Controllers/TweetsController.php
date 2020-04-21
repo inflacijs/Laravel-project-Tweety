@@ -20,13 +20,13 @@ class TweetsController extends Controller
             $attributes['image'] = request('image')->store('images');
         }
        
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $attributes['body'],
-            'image' => $attributes['image']
-        ]);
+       $attributes['user_id'] = auth()->id();
 
-        return redirect()->route('home');
+        Tweet::create($attributes);
+    
+        return redirect()
+                ->route('home')
+                ->with('flash_message','Tweet is succesfully published.');
     }
 
     public function index()

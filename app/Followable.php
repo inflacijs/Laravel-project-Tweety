@@ -6,7 +6,9 @@ trait Followable
 {
     public function follow(User $user)
     {
+        
         return $this->follows()->save($user);
+        
     }
 
 
@@ -18,13 +20,14 @@ trait Followable
 
     public function toggleFollow(User $user)
     {
-        // if($this->following($user))
-        // {
-        //    return  $this->unFollow($user);
-        // } 
-        //    return $this->follow($user);  // Šī vietā izmantojam īsāku kodu
+        if($this->following($user))
+        {
+           return  $this->unFollow($user);
+        } 
+           return $this->follow($user);  // Šī vietā izmantojam īsāku kodu
+         
 
-        $this->follows()->toggle($user);
+        // $this->follows()->toggle($user);
         
     }
     

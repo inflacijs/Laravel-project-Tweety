@@ -12,6 +12,18 @@ class FollowsController extends Controller
         // have the auth'd user follow the given user
         current_user()->toggleFollow($user);
 
-        return back();
+        if(current_user()->following($user))
+        {
+            return redirect()
+                ->back()
+                ->with('follow', 'Now you are following ' . $user->name);
+
+        }
+
+        return redirect()
+                ->back()
+                ->with('unfollow', 'You stopped following ' . $user->name);
+        
+       
     }
 }

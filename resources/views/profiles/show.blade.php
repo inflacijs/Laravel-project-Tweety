@@ -1,4 +1,16 @@
+@if (Session::has('follow'))
 
+    <div class="alert alert-success text-center">
+        <em> {{ session('follow') }}</em>
+    </div>
+
+@elseif (Session::has('unfollow'))
+
+    <div class="alert alert-danger text-center">
+        <em> {{ session('unfollow') }}</em>
+    </div>
+
+@endif
 
 <x-app>
     <header class="mb-6" style="position:relative;">
