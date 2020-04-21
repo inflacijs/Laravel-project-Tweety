@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Builder;
 
 
 
 trait Likeable {
 
-    public function scopeWithLikes(Builder $query) // Strādas kā Tweet::withLikes()->first();
+    public function scopeWithLikes(Builder $query) // Strādas kā Tweet::withLikes()->all(); Sanāk ka pados tweetus kopā ar like un  dislike tabulu. Ja būtu Tweets::all(), tad padotu bez like un dislike tabulas.
     {
             // select * from tweets
             // left join (
@@ -25,22 +26,20 @@ trait Likeable {
             );
     }
 
-    public function like($user = null)
+    public function like($user = null, $liked = true)
     {
-        $this->likes()->updateOrCreate([
+        $this->likes()->updateOrCreate(
+            [
             'user_id' => $user ? $user->id : auth()->id(),
-        ], [
-            'liked' => true
-        ]);
+            ], 
+            [
+                'liked' => $liked
+            ]);
     }
 
     public function dislike($user = null)
     {
-        $this->likes()->updateOrCreate([
-            'user_id' => $user ? $user->id : auth()->id(),
-        ], [
-            'liked' => false
-        ]);
+       return $this->like($user, false);
     }
 
     public function isLikedBy(User $user)
@@ -59,8 +58,40 @@ trait Likeable {
         ->count();  
     }
 
+    public function deleteRow($user)
+    {
+        $user->likes()
+            ->where('tweet_id', $this->id)
+            ->delete();
+    }
+
     public function likes()
     {
         return $this->hasMany(Like::class);
     }
+
+    
+    public function toggleLike(User $user)
+    {
+        if($this->isLikedBy($user))
+        {
+            $this->deleteRow($user);
+        }else{
+            $this->like($user);
+        }
+            
+    }
+
+    public function toggleDislike(User $user)
+    {
+        if($this->isDislikedBy($user))
+        {
+            $this->deleteRow($user);
+        }else{
+            $this->dislike($user);
+        }
+            
+    }
+
+    
 }

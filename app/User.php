@@ -65,9 +65,13 @@ class User extends Authenticatable
         // as well as the tweets of everyone
         // they follow ... in descending order by date
 
-        $ids = $this->follows()->pluck('id');
-        $ids->push($this->id);
-        return Tweet::whereIn('user_id', $ids)->withLikes()->latest()->get();
+        $friends = $this->follows()->pluck('id');
+        
+        return Tweet::whereIn('user_id', $friends)
+                ->orWhere('user_id', $this->id)
+                ->withLikes() // Šis pados scope ar like un dislike colomnss. Metode atrodās Likeable traitā.
+                ->latest()
+                ->get();
 
     }
 
@@ -91,6 +95,8 @@ class User extends Authenticatable
 
         return $this->hasMany(Like::class);
     }
+
+  
 
 
 }

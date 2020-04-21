@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 class TweetLikescontroller extends Controller
 {
     public function store(Tweet $tweet) {
-        $tweet->like(current_user());
+        $tweet->toggleLike(current_user());
         return back();
+        
     }
 
     public function destroy(Tweet $tweet){
-        $tweet->dislike(current_user());
+        $tweet->toggleDislike(current_user());
         return back();
     }
 }
