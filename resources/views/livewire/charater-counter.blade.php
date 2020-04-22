@@ -12,7 +12,7 @@
     {{-- <input wire:model="name" type="text"> --}}
 
     <div style="float:right;color:grey">
-    You have left {{255 - count(str_split($name)) > 0 ? 255 - count(str_split($name)) : 0}} charaters!
+    You have left {{256 - count(str_split($name)) > 0 ? 256 - count(str_split($name)) : 0}} charaters!
     </div>
 </div>
 

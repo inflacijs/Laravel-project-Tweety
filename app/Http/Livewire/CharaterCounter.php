@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class CharaterCounter extends Component
 {
-    public $name = "Baiba";
+    public $name = "";
     public function render()
     {
         return view('livewire.charater-counter');
