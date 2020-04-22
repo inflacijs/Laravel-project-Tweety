@@ -1,13 +1,9 @@
 <div class="border border-blue-400 rounded-lg py-6 px-8">
     <form method="POST" action="/tweety/public/tweets" enctype="multipart/form-data">
         @csrf
-        <textarea 
-             name="body" 
-             class="w-full"
-             placeholder="What's up doc?"
-             required
-             rows="4"
-        ></textarea>
+       
+
+        @livewire('charater-counter')
         
         <div class="mb-6">
             
@@ -45,6 +41,8 @@
 
         </footer>  
     </form>
+
+    
 
     @error( 'body')
         <p class="text-red-500 text-sm">{{$message}}</p>

@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    @livewireStyles
     
 </head>
 <body>
@@ -33,6 +34,7 @@
 
     </div>
     <script src="http://unpkg.com/turbolinks"></script>
+    @livewireScripts
 </body>
 </html>
 
